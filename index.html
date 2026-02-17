@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabihool Alam | Video Editor</title>
+    <meta name="description" content="Portfolio of Sabihool Alam, a Video Editor specializing in cinematic, high-impact visual storytelling.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#050505',
+                        light: '#FAFAFA',
+                        gray: {
+                            850: '#1f1f1f'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #FAFAFA;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Animation Utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for grids */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Image Hover Zoom */
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        /* Input Autofill Fix for Dark Mode */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #050505 inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md border-b border-white/10 bg-black/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-xl font-bold tracking-tighter hover:text-gray-300 transition-colors">
+                    SABIHOOL
+                </a>
+
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-gray-400 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-gray-400 transition-colors">Projects</a>
+                    <a href="#pricing" class="hover:text-gray-400 transition-colors">Pricing</a>
+                    <a href="#contact" class="hover:text-gray-400 transition-colors">Contact</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gray-300 focus:outline-none">
+                        <span id="menu-icon-container">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </span>
+                        <span id="close-icon-container" class="hidden">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-black border-b border-white/10 absolute w-full">
+            <div class="px-6 py-4 space-y-4 flex flex-col items-center text-center">
+                <a href="#about" class="block text-sm font-medium py-2 hover:text-gray-400 w-full">About</a>
+                <a href="#projects" class="block text-sm font-medium py-2 hover:text-gray-400 w-full">Projects</a>
+                <a href="#pricing" class="block text-sm font-medium py-2 hover:text-gray-400 w-full">Pricing</a>
+                <a href="#contact" class="block text-sm font-medium py-2 hover:text-gray-400 w-full">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+        
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <p class="text-sm md:text-base text-gray-400 mb-6 tracking-[0.2em] uppercase p-4">Sabihool Alam</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
+                Crafting visual <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">narratives</span> that matter.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light">
+                A Video Editor specializing in dynamic cuts, cinematic color grading, and compelling storytelling that holds the viewer's attention.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="group relative px-8 py-3 bg-white text-black font-semibold overflow-hidden rounded-full transition-all hover:scale-105">
+                    <span class="relative z-10">Watch Reel</span>
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all hover:border-white">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 animate-bounce">
+            <a href="#about" class="text-gray-500 hover:text-white transition-colors">
+                <i data-lucide="arrow-down" class="w-6 h-6"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 bg-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Mastering the timeline.</h2>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    I am Sabihool Alam, a passionate Video Editor dedicated to bringing raw footage to life. My philosophy is simple: every frame must serve the story, and rhythm is everything.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    I specialize in narrative flow, dynamic motion graphics, and professional sound design. Whether it's a high-energy brand promo or a deep-dive documentary, I ensure the final cut resonates with your audience.
+                </p>
+                
+                <div class="space-y-4">
+                    <h3 class="text-sm uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">Software Stack</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 border border-white/10 rounded-full text-sm text-gray-300 hover:border-white/40 transition-colors">VSDC</span>
+                        <span class="px-4 py-2 border border-white/10 rounded-full text-sm text-gray-300 hover:border-white/40 transition-colors">CapCut</span>
+                        <span class="px-4 py-2 border border-white/10 rounded-full text-sm text-gray-300 hover:border-white/40 transition-colors">Filmora</span>
+                        <span class="px-4 py-2 border border-white/10 rounded-full text-sm text-gray-300 hover:border-white/40 transition-colors">VEO 3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reveal delay-200 relative h-full min-h-[400px] border border-white/10 bg-white/5 rounded-2xl overflow-hidden">
+                <img src="\image\my image 2.png" alt="Editing Workspace" class="absolute inset-0 w-full h-full object-cover object-center opacity-90 hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 bg-black">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 reveal">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Featured Edits</h2>
+                <p class="text-gray-400">A curated selection of 4 standout video projects.</p>
+            </div>
+            <a href="https://vimeo.com/" target="_blank"  class="hidden md:inline-flex items-center text-sm font-medium border-b border-white pb-1 hover:text-gray-300 transition-colors">
+                View Vimeo <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
+            </a>
+        </div>
+
+       
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <article class="group project-card cursor-pointer lg:col-span-2 reveal">
+                <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video bg-gray-900">
+                    <img src="https://img.freepik.com/free-photo/digital-nomad-working-remotly-their-project_23-2149241821.jpg" alt="sabihoolalam Portfolio Video showreel" class="project-img object-cover w-full h-full transition-transform duration-700 ease-out opacity-80 group-hover:opacity-100">
+                    <a href="https://drive.google.com/file/d/1CGBb7UDUmzFTOPWZy8d6_Zg-g-Tj8Cs1/view?usp=drive_link" target="_blank" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-white drop-shadow-lg"></i>
+                    </a>
+                </div>
+                <div class="mt-4 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-gray-300 transition-colors">Main Portfolio Showreel</h3>
+                        <p class="text-sm text-gray-400 mt-1">A comprehensive compilation of my best editing, grading, and motion graphics work.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1CGBb7UDUmzFTOPWZy8d6_Zg-g-Tj8Cs1/view?usp=drive_link" target="_blank" class="p-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="group project-card cursor-pointer reveal delay-100">
+                <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-square md:aspect-video lg:aspect-square bg-gray-900">
+                    <img src="https://iimtu.edu.in/blog/wp-content/uploads/2024/04/VE-1.jpg" alt="sabihoolalam video Portfolio showreel" class="project-img object-cover w-full h-full transition-transform duration-700 ease-out opacity-80 group-hover:opacity-100">
+                    <a href="https://drive.google.com/file/d/1LtU8Telo-IfCm78qRx_46egxdMvqGWKA/view?usp=sharing" target="_blank" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
+                        <i data-lucide="play-circle" class="w-12 h-12 text-white drop-shadow-lg"></i>
+                    </a>
+                </div>
+                <div class="mt-4 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-gray-300 transition-colors">Dynamic Editing Showreel</h3>
+                        <p class="text-sm text-gray-400 mt-1">Highlighting seamless transitions, rhythm, and fast-paced visual storytelling.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1LtU8Telo-IfCm78qRx_46egxdMvqGWKA/view?usp=sharing" target="_blank" class="p-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="group project-card cursor-pointer reveal">
+                <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-square md:aspect-video lg:aspect-square bg-gray-900">
+                    <img src="https://sb-wp-assets.storyblocks.com/resources/wp-content/uploads/2024/05/27103627/videoeditorskills_thumbnail-1536x864.jpg" alt="how to make your video viral on YouTube" class="project-img object-cover w-full h-full transition-transform duration-700 ease-out opacity-80 group-hover:opacity-100">
+                    <a href="https://drive.google.com/file/d/1S_Zeiy_37KwK3y4PWvwDJoZQqS33OyT_/view?usp=drive_link" target="_blank" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
+                        <i data-lucide="play-circle" class="w-12 h-12 text-white drop-shadow-lg"></i>
+                    </a>
+                </div>
+                <div class="mt-4 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-gray-300 transition-colors">Viral YouTube Guide</h3>
+                        <p class="text-sm text-gray-400 mt-1">High-retention YouTube editing featuring pop-up graphics and engaging sound design.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1S_Zeiy_37KwK3y4PWvwDJoZQqS33OyT_/view?usp=drive_link" target="_blank" class="p-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="group project-card cursor-pointer lg:col-span-2 reveal delay-100">
+                <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video bg-gray-900">
+                    <img src="https://i.ytimg.com/vi/ayEKSNJbJiw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAZcONb_a4JOPgRSeTUMm4AgAnZ9w" alt="revive homes showreel" class="project-img object-cover w-full h-full transition-transform duration-700 ease-out opacity-80 group-hover:opacity-100">
+                    <a href="https://drive.google.com/file/d/1slvLqlER2De1k7pKOh9-Qer_hHeKL1L2/view?usp=drive_link" target="_blank" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-white drop-shadow-lg"></i>
+                    </a>
+                </div>
+                <div class="mt-4 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-gray-300 transition-colors">Revive Homes - Brand Showreel</h3>
+                        <p class="text-sm text-gray-400 mt-1">A professional promotional video crafted for a home maintenance business, focusing on reliability and clean corporate branding.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1slvLqlER2De1k7pKOh9-Qer_hHeKL1L2/view?usp=drive_link" target="_blank"  class="p-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+
+
+
+
+
+        
+    </div>
+</section>
+
+    <section id="pricing" class="py-24 px-6 bg-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Editing Rates</h2>
+                <p class="text-gray-400">Straightforward pricing for high-quality video production.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-all duration-300 hover:-translate-y-2 bg-black reveal">
+                    <h3 class="text-xl font-bold mb-2">Short Form / Reels</h3>
+                    <div class="text-4xl font-bold mb-6">$50</div>
+                    <p class="text-gray-400 text-sm mb-8">Perfect for TikTok, Instagram Reels, and YouTube Shorts.</p>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Up to 60 Seconds</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Engaging Captions</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Basic Color Correction</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Trending Audio Sync</li>
+                    </ul>
+                    <a href="https://www.linkedin.com/in/sabihoolalam/" target="_blank" class="block w-full py-3 text-center border border-white/20 rounded-lg hover:bg-white hover:text-black transition-all">Get Started</a>
+                </div>
+
+                <div class="p-8 border border-white rounded-2xl relative transition-all duration-300 hover:-translate-y-2 bg-gray-900 reveal delay-100">
+                    <div class="absolute top-0 right-0 bg-white text-black text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
+                    <h3 class="text-xl font-bold mb-2">YouTube Video</h3>
+                    <div class="text-4xl font-bold mb-6">$150</div>
+                    <p class="text-gray-400 text-sm mb-8">Full-length engaging content for content creators.</p>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Up to 15 Minutes</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> A-Roll & B-Roll Cuts</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Sound Design & Mixing</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Motion Graphics / Text</li>
+                    </ul>
+                    <a href="https://www.linkedin.com/in/sabihoolalam/" target="_blank" class="block w-full py-3 text-center bg-white text-black rounded-lg hover:bg-gray-200 transition-all">Get Started</a>
+                </div>
+
+                <div class="p-8 border border-white/10 rounded-2xl hover:border-white/30 transition-all duration-300 hover:-translate-y-2 bg-black reveal delay-200">
+                    <h3 class="text-xl font-bold mb-2">Commercial / Film</h3>
+                    <div class="text-4xl font-bold mb-6">$400+</div>
+                    <p class="text-gray-400 text-sm mb-8">Premium editing for brands, documentaries, or music videos.</p>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Advanced Color Grading</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Multi-cam Synchronization</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Visual Effects (VFX)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-white"></i> Multiple Revisions</li>
+                    </ul>
+                    <a href="https://www.linkedin.com/in/sabihoolalam/" target="_blank" class="block w-full py-3 text-center border border-white/20 rounded-lg hover:bg-white hover:text-black transition-all">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-black">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Let's work together.</h2>
+            <p class="text-gray-400">Have a video project in mind? Fill out the form below.</p>
+        </div>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-12 reveal">
+            
+            <input type="hidden" name="access_key" value="830a3b7e-6abe-4e71-831c-f1f9628b601c">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="relative group">
+                    <input type="text" id="name" name="name" required class="block w-full bg-transparent border-b border-gray-700 text-white py-4 focus:outline-none focus:border-white transition-colors peer">
+                    <label for="name" class="absolute left-0 top-4 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-white peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white pointer-events-none">Name</label>
+                </div>
+                <div class="relative group">
+                    <input type="email" id="email" name="email" required class="block w-full bg-transparent border-b border-gray-700 text-white py-4 focus:outline-none focus:border-white transition-colors peer">
+                    <label for="email" class="absolute left-0 top-4 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-white peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white pointer-events-none">Email</label>
+                </div>
+            </div>
+            
+            <div class="relative group">
+                <textarea id="message" name="message" rows="4" required class="block w-full bg-transparent border-b border-gray-700 text-white py-4 focus:outline-none focus:border-white transition-colors peer resize-none"></textarea>
+                <label for="message" class="absolute left-0 top-4 text-gray-500 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-white peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white pointer-events-none">Tell me about your video project</label>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="px-12 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform duration-300">
+                    Send Message
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-20 flex justify-center space-x-8 reveal delay-100">
+            <a href="https://www.linkedin.com/in/sabihoolalam/" class="text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                <span class="sr-only">LinkedIn</span>
+            </a>
+            <a href="https://github.com/Sabihool" class="text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="github" class="w-6 h-6"></i>
+                <span class="sr-only">GitHub</span>
+            </a>
+            <a href="https://x.com/sabihool" class="text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="twitter" class="w-6 h-6"></i>
+                <span class="sr-only">Twitter</span>
+            </a>
+            <a href="mailto:sabihoolalan@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="mail" class="w-6 h-6"></i>
+                <span class="sr-only">Email</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-8 border-t border-white/10 bg-black text-center text-sm text-gray-600">
+        <p>&copy; 2026 Sabihool Alam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        const menuIcon = document.getElementById('menu-icon-container');
+        const closeIcon = document.getElementById('close-icon-container');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            
+            // Toggle Icons and Background
+            if(isExpanded) {
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                navbar.classList.add('bg-black');
+            } else {
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                if(window.scrollY === 0) navbar.classList.remove('bg-black');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                // Reset icons
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-black/80');
+            } else {
+                navbar.classList.remove('bg-black/80');
+            }
+        });
+    </script>
+</body>
+</html>
